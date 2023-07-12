@@ -49,13 +49,16 @@ let model;
 
 // Function to load the pre-trained model
 async function loadModel() {
+  showSpinner();
   try {
     // Load the model from Teachable Machine
     model = await tf.loadLayersModel('https://teachable-machine-backend.onrender.com/model.json');
-
+    
     // Print model summary (optional)
     model.summary();
+    hideSpinner();
   } catch (error) {
+    hideSpinner();
     console.error('Error loading the model:', error);
   }
 }
@@ -67,7 +70,7 @@ function captureImage() {
   const videoElement = document.getElementById('video');
   const videoWidth = videoElement.videoWidth;
   const videoHeight = videoElement.videoHeight;
-
+  
   // Create a canvas element
   const canvas = document.createElement('canvas');
   canvas.width = 224; // Set the desired width for the input shape of the model
@@ -91,20 +94,19 @@ function captureImage() {
 
 // Function to classify the captured image
 async function classifyImage() {
-  showSpinner();
   // Capture an image from the webcam
   const image = captureImage();
-
+  
   // Preprocess the image before making predictions
   // Add any necessary preprocessing steps here if needed
-
+  
   try {
     // Convert the image data to a TensorFlow.js tensor
     const tensor = tf.browser.fromPixels(image);
-
+    
     // Normalize the image tensor
     const normalizedTensor = tensor.toFloat().div(tf.scalar(255));
-
+    
     // Add an extra dimension to match the model's input shape
     const batchedTensor = normalizedTensor.expandDims();
     
@@ -113,17 +115,22 @@ async function classifyImage() {
     
     // Process the predictions (extract class label and probability)
     const { label, probability } = processPrediction(predictions);
-    
-    // Display the classification results on the UI
-    const classificationResultElement = document.getElementById('classification-result');
-    classificationResultElement.textContent = `Predicted class: ${label} (${Math.round(probability * 100)}%)`;
+
+     swal.fire({
+      title: `${label} (${Math.round(probability * 100)}%)`,
+      icon: "success",
+      width:"30%",
+      didClose: () => {
+        window.location.reload();
+      }
+    });
     
     // Clean up
     tensor.dispose();
     normalizedTensor.dispose();
     batchedTensor.dispose();
-    hideSpinner();
     predictions.dispose();
+    hideSpinner();
   } catch (error) {
     hideSpinner();
     console.error('Error classifying the image:', error);
@@ -136,7 +143,7 @@ function processPrediction(predictions) {
   const classLabels = ['Object', 'No object']; // Customize labels as per your model
   const probabilities = Array.from(predictions.dataSync());
   const maxProbabilityIndex = probabilities.indexOf(Math.max(...probabilities));
-
+  
   return {
     label: classLabels[maxProbabilityIndex],
     probability: probabilities[maxProbabilityIndex],
@@ -150,6 +157,7 @@ captureButton.addEventListener('click', handleCaptureButtonClick);
 // Function to handle the capture button click event
 function handleCaptureButtonClick() {
   // Call the classifyImage function
+   showSpinner();
   classifyImage();
 }
 

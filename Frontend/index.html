@@ -2,7 +2,18 @@
 <html>
 <head>
   <title>Intelligent Object Classifier</title>
+
+  <!------------------ Favicon  ------------------>
+  <link rel="shortcut icon" href="" type="image/x-icon">
+
+  <!------------------ Styles  ------------------>
   <link rel="stylesheet" href="styles.css">
+
+  <!------------------ Box Icons  ------------------>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!------------------ SweetAlert JS  ------------------>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <h1>Intelligent Object Classifier</h1>
@@ -10,15 +21,10 @@
   <div id="video-container">
     <video id="video" autoplay playsinline></video>
   </div>
-
-  <button id="capture-button">Capture Image</button>
   
   <div id="spinner" class="spinner"></div>
-  
-  <div id="classification-result">
-    <!-- Classification result will be displayed here -->
-  </div>
-  
+
+  <button id="capture-button">Capture Image</button>
   
   
   <div id="object-details">
