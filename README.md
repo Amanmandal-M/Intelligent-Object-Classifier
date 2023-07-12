@@ -34,7 +34,7 @@ Intelligent Object Classifier is a web application that uses machine learning to
 <br>
 
 ```
-git clone https://github.com/Amanmandal-M/Teachable_-Machine_Project.git
+git clone https://github.com/Amanmandal-M/Intelligent-Object-Classifier.git
 ```
 
 <br>
@@ -120,7 +120,7 @@ nodemon index.js
 <br>
 
 ```
-git clone https://github.com/Amanmandal-M/Teachable_-Machine_Project.git
+git clone https://github.com/Amanmandal-M/Intelligent-Object-Classifier.git
 ```
 
 <br>
