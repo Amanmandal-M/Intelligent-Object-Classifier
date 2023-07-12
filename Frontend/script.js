@@ -51,7 +51,7 @@ let model;
 async function loadModel() {
   try {
     // Load the model from Teachable Machine
-    model = await tf.loadLayersModel('http://localhost:3000/model.json');
+    model = await tf.loadLayersModel('https://teachable-machine-backend.onrender.com/model.json');
 
     // Print model summary (optional)
     model.summary();
