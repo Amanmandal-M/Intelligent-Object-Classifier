@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #042bec;
+}
+
+#video-container {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#video {
+  width: 100%;
+  height: auto;
+}
+
+#capture-button {
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1.5rem auto;
+  transition: background-color 0.3s ease;
+}
+
+#capture-button:hover {
+  background-color: #0056b3;
+}
+
+#classification-result {
+  margin-bottom: 1.5rem;
+  color: #2bdd0e;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
+#object-details {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Adjust the font size for small screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #classification-result,
+  #object-details {
+    font-size: 0.8rem;
+  }
+}
+
+
+
+  /* Add this code at the end of the file */
+.spinner {
+  border: 15px solid #e9da0e;
+  border-top: 15px solid #47dd06;
+  border-radius: 30%;
+  width: 30px;
+  height: 30px;
+  animation: spin 0.8s linear infinite;
+  margin: 1rem auto;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intelligent Object Classifier</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Intelligent Object Classifier</h1>
+
+  <div id="video-container">
+    <video id="video" autoplay playsinline></video>
+  </div>
+
+  <button id="capture-button">Capture Image</button>
+  
+  <div id="spinner" class="spinner"></div>
+  
+  <div id="classification-result">
+    <!-- Classification result will be displayed here -->
+  </div>
+  
+  
+  
+  <div id="object-details">
+    <!-- Relevant object details will be displayed here -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
